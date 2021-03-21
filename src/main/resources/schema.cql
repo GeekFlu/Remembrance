@@ -7,13 +7,15 @@ use tesseract;
  */
 create table if not exists remembrance
 (
-    remembrance_id uuid,
+    user_id        uuid,
+    remembrance_id timeuuid,
     name           text,
     description    text,
     created        timestamp,
     updated        timestamp,
-    PRIMARY KEY ( remembrance_id )
+    PRIMARY KEY (user_id, remembrance_id)
 );
+
 
 /*
     This table will contain a remembrance detail:

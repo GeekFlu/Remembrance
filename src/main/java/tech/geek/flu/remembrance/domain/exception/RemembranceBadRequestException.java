@@ -17,11 +17,15 @@ public class RemembranceBadRequestException extends GenericException {
     this.errorResponse = new ErrorResponse(violations.stream()
         .map(objectConstraintViolation -> new
             Error(
-                ErrorCode.EPIC_EVENT_REQUEST_BODY_EXCEPTION,
+                ErrorCode.REMEMBRANCE_REQUEST_BODY_EXCEPTION,
                 "Request Validation Failed",
                 Collections.singletonList(new ErrorDetail(objectConstraintViolation.getPropertyPath().toString(), objectConstraintViolation.getMessage()))
         ))
         .collect(Collectors.toList())
     );
+  }
+
+  public RemembranceBadRequestException(ErrorCode errorCode, String message) {
+    this.errorResponse = new ErrorResponse(Collections.singletonList(new Error(errorCode, message)));
   }
 }

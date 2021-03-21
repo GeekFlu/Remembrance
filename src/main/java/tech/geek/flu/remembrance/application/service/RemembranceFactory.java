@@ -13,7 +13,7 @@ public class RemembranceFactory {
   @Autowired
   private RemembranceRepository remembranceRepository;
 
-  public Remembrance createMoment() {
+  public Remembrance createRemembrance() {
     return null;
   }
 

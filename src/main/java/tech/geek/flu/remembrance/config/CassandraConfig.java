@@ -1,7 +1,6 @@
 package tech.geek.flu.remembrance.config;
 
 
-import com.datastax.oss.driver.api.core.CqlSession;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +14,6 @@ import org.springframework.data.cassandra.core.CassandraTemplate;
 import org.springframework.data.cassandra.core.convert.CassandraConverter;
 import org.springframework.data.cassandra.core.convert.MappingCassandraConverter;
 import org.springframework.data.cassandra.core.mapping.CassandraMappingContext;
-import org.springframework.data.cassandra.core.mapping.SimpleUserTypeResolver;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
 import java.util.Objects;
@@ -38,15 +36,6 @@ public class CassandraConfig {
   @Bean
   public AsyncCassandraOperations asyncCassandraOperations(@Qualifier("remembranceSession") CqlSessionFactoryBean cqlSessionFactoryBean, CassandraConverter cassandraConverter) {
     return new AsyncCassandraTemplate(Objects.requireNonNull(cqlSessionFactoryBean.getObject()), cassandraConverter);
-  }
-
-  @Bean
-  public CassandraMappingContext mappingContext(CqlSession cqlSession) {
-
-    CassandraMappingContext mappingContext = new CassandraMappingContext();
-    mappingContext.setUserTypeResolver(new SimpleUserTypeResolver(cqlSession));
-
-    return mappingContext;
   }
 
   @Bean

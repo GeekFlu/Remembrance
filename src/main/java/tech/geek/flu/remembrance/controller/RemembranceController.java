@@ -29,9 +29,9 @@ public class RemembranceController {
     return "Version: 0.0.1";
   }
 
-  @PostMapping("/create")
+  @PostMapping("/bootstrap")
   public RemembranceResponse bootstrapEvent(@RequestBody @Valid RemembranceRequest remembranceRequest) {
-    Remembrance remembrance = applicationService.createMoment(remembranceRequest.getRemembranceName(), remembranceRequest.getRemembranceDescription());
+    Remembrance remembrance = applicationService.boostrapRemembrance(remembranceRequest.getRemembranceName(), remembranceRequest.getRemembranceDescription());
     return remembranceResponseMapper.toEpicEventResponse(remembrance);
   }
 

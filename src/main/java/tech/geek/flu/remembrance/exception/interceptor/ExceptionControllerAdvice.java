@@ -31,7 +31,7 @@ public class ExceptionControllerAdvice {
   @ResponseBody
   public ErrorResponse handlerRepositoryException(DataAccessException dataAccessException) {
     return new ErrorResponse(List.of(Error.builder()
-        .code(ErrorCode.EPIC_EVENT_REPOSITORY_ERROR)
+        .code(ErrorCode.REMEMBRANCE_REPOSITORY_ERROR)
         .details(List.of(ErrorDetail.builder()
             .field("Repository Exception")
             .issue(dataAccessException.getMessage())

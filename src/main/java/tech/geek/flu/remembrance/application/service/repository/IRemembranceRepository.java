@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public interface IRemembranceRepository {
 
-  Remembrance getMoment(UUID momentId);
+  Remembrance getRemembrance(UUID remembranceId);
   void save(Remembrance remembrance);
 
 }

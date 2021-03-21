@@ -16,8 +16,10 @@ public class RemembranceApplicationService {
   private RemembranceRepository remembranceRepository;
 
   @SneakyThrows
-  public Remembrance createMoment(String name, String description) {
-    return remembranceFactory.createMoment();
+  public Remembrance boostrapRemembrance(String name, String description) {
+    Remembrance remembrance = remembranceFactory.createRemembrance();
+    remembranceRepository.save(remembrance);
+    return remembrance;
   }
 
 }
