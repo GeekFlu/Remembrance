@@ -7,7 +7,7 @@ use tesseract;
  */
 create table if not exists remembrance
 (
-    user_id        uuid,
+    user_id        timeuuid,
     remembrance_id timeuuid,
     name           text,
     description    text,
@@ -27,7 +27,7 @@ create table if not exists remembrance
  */
 create table if not exists moment
 (
-    remembrance_id   uuid,
+    remembrance_id   timeuuid,
     moment_id        timeuuid,
     link             text,
     images           text,
