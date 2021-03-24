@@ -17,9 +17,9 @@ public class RemembranceBadRequestException extends GenericException {
     this.errorResponse = new ErrorResponse(violations.stream()
         .map(objectConstraintViolation -> new
             Error(
-                ErrorCode.REMEMBRANCE_REQUEST_BODY_EXCEPTION,
-                "Request Validation Failed",
-                Collections.singletonList(new ErrorDetail(objectConstraintViolation.getPropertyPath().toString(), objectConstraintViolation.getMessage()))
+            ErrorCode.REMEMBRANCE_REQUEST_BODY_EXCEPTION,
+            "Request Validation Failed",
+            Collections.singletonList(new ErrorDetail(objectConstraintViolation.getPropertyPath().toString(), objectConstraintViolation.getMessage()))
         ))
         .collect(Collectors.toList())
     );

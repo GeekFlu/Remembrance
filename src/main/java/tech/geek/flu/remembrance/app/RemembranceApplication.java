@@ -9,8 +9,8 @@ import org.springframework.data.cassandra.repository.config.EnableCassandraRepos
 @ComponentScan({"tech.geek.flu.remembrance"})
 public class RemembranceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(RemembranceApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(RemembranceApplication.class, args);
+  }
 
 }
