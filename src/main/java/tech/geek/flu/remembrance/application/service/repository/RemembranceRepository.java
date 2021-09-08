@@ -25,7 +25,7 @@ public class RemembranceRepository implements IRemembranceRepository {
   @Override
   public Remembrance getRemembrance(UUID remembranceId) {
     ListenableFuture<Remembrance> momentListenableFuture = asyncCassandraOperations.selectOneById(remembranceId, Remembrance.class);
-    Remembrance remembrance = DynamicThreadPool.getFromFuture(momentListenableFuture, 50);
+    var remembrance = DynamicThreadPool.getFromFuture(momentListenableFuture, 50);
     if (Objects.isNull(remembrance)) {
       throw new RemembranceBadRequestException(ErrorCode.REMEMBRANCE_INVALID_EXCEPTION, "Unable to find Remembrance with Id:" + remembranceId);
     }

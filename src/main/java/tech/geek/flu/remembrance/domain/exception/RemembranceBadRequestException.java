@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import tech.geek.flu.remembrance.domain.type.ErrorCode;
 
 import javax.validation.ConstraintViolation;
-import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -19,13 +19,13 @@ public class RemembranceBadRequestException extends GenericException {
             Error(
             ErrorCode.REMEMBRANCE_REQUEST_BODY_EXCEPTION,
             "Request Validation Failed",
-            Collections.singletonList(new ErrorDetail(objectConstraintViolation.getPropertyPath().toString(), objectConstraintViolation.getMessage()))
+            List.of(new ErrorDetail(objectConstraintViolation.getPropertyPath().toString(), objectConstraintViolation.getMessage()))
         ))
         .collect(Collectors.toList())
     );
   }
 
   public RemembranceBadRequestException(ErrorCode errorCode, String message) {
-    this.errorResponse = new ErrorResponse(Collections.singletonList(new Error(errorCode, message)));
+    this.errorResponse = new ErrorResponse(List.of(new Error(errorCode, message)));
   }
 }
